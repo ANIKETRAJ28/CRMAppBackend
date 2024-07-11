@@ -34,8 +34,8 @@ const createTicket = async(data, userData) =>{
                     error: userResponse.error
                 }
             }
-            if(data.assignedTo) {
-                const response = await UserService.addTicketAssignedToUser(data.assignedTo, ticketResponse._id);
+            if(validAssignedTo.email) {
+                const response = await UserService.addTicketAssignedToUser(validAssignedTo.email, ticketResponse._id);
                 if( response.error){
                     return {
                         error: response.error
