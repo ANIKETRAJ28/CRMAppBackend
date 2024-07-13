@@ -133,19 +133,18 @@ const updateTicketById = async(ticketIdInfo, ticketInfo, currentUser) =>{
         }
             
         //previousAssignedToUser
-        await User.findOneAndUpdate({email:validateTicket.assignedTo}, {
-            $pull:{
-                ticketsAssigned: validateTicket._id
-            }
-        })
+        // await User.findOneAndUpdate({email:validateTicket.assignedTo}, {
+        //     $pull:{
+        //         ticketsAssigned: validateTicket._id
+        //     }
+        // })
 
         //newAssignedToUser 
-        await User.findOneAndUpdate({email:update.assignedTo}, {
-            $push:{
-                ticketsAssigned: validateTicket._id
-            }
-        })
-
+        // await User.findOneAndUpdate({email:update.assignedTo}, {
+        //     $push:{
+        //         ticketsAssigned: validateTicket._id
+        //     }
+        // })
         const response = await Ticket.findOneAndUpdate(
             filter, 
             update,
