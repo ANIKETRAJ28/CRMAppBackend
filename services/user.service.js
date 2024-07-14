@@ -70,10 +70,17 @@ const getUserByEmail = async(data) => {
 
 const getValidActiveUser = async () => {
     try {
-        const users = await User.find({
+        let users = [];
+        const engineers = await User.find({
             userStatus: "approved",
             userType: "engineer"
         });
+        users = [...users, ...engineers];
+        const admins = await User.find({
+            userStatus: "approved",
+            userType: "admin"
+        });
+        users = [...users, ...admins];
         console.log(users);
         if(users.length == 0) return {
             error: "no valid assignable user found"
