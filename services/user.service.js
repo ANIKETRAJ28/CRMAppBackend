@@ -60,7 +60,7 @@ const verifyUser = async(data) =>{
 const getUserByEmail = async(data) => { 
     try{
         let userInfo= await User.findOne({email: data.email});
-        console.log(userInfo);
+        // console.log(userInfo);
         return userInfo;
     }
     catch(err){
@@ -299,6 +299,7 @@ const addTicketAssignedToUser = async(userEmail, ticketId) =>{
 
 const getAllAssignedTicketsOfUser  = async(userInfo) =>{
     try{
+        console.log(userInfo);
         const validatedUser = await isValidActiveUser(userInfo);
        if(!validatedUser || validatedUser.error){
             return {
