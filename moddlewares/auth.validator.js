@@ -19,23 +19,23 @@ const isUserAuthenticated = async (req, res, next) =>{
             message: "jwt token is invalid"
         })
     }
-    next();
+    // next();
     //token is valid
-    //  try{
-    //     const userInfo = await userService.getUserByEmail({email:isVerifiedToken.email});
-    //     if(!userInfo){
-    //         return res.status(401).send({
-    //             message: "email is invalid"
-    //         })
-    //     }
-    //     req.user = userInfo;
-    //     next();
-    // }
-    //  catch(err){
-    //     return res.status(401).send({
-    //         message: "userdata is invalid"
-    //     })
-    //  }
+    try{
+        const userInfo = await userService.getUserByEmail({email:isVerifiedToken.email});
+        if(!userInfo){
+            return res.status(401).send({
+                message: "email is invalid"
+            })
+        }
+        req.user = userInfo;
+        next();
+    }
+    catch(err){
+        return res.status(401).send({
+            message: "userdata is invalid"
+        })
+    }
 }
 
 const isAdmin = (req, res, next) =>{

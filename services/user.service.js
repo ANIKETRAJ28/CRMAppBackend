@@ -60,6 +60,7 @@ const verifyUser = async(data) =>{
 const getUserByEmail = async(data) => { 
     try{
         let userInfo= await User.findOne({email: data.email});
+        console.log(userInfo);
         return userInfo;
     }
     catch(err){
