@@ -299,13 +299,12 @@ const addTicketAssignedToUser = async(userEmail, ticketId) =>{
 
 const getAllAssignedTicketsOfUser  = async(userInfo) =>{
     try{
-        console.log(userInfo);
-        const validatedUser = await isValidActiveUser(userInfo);
-       if(!validatedUser || validatedUser.error){
-            return {
-                error: "Invalid User"
-            }
-        }
+    //     const validatedUser = await isValidActiveUser(userInfo);
+    //    if(!validatedUser || validatedUser.error){
+    //         return {
+    //             error: "Invalid User"
+    //         }
+    //     }
         const tickets = [];
         for(const ticketId of userInfo.ticketsAssigned){
             const ticket =  await Ticket.findOne({_id: ticketId});
