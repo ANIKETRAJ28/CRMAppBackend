@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
+app.get('/home', (req, res) => {
     return res.json({message: "ok"});
 })
 
